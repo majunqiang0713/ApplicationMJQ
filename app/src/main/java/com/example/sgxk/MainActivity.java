@@ -16,6 +16,9 @@ public class MainActivity extends AppCompatActivity {
        /* this.requestWindowFeature(Window.FEATURE_NO_TITLE);
         this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);*/
+        /**
+         * 增加全屏
+         */
         setContentView(R.layout.activity_main);
         View decorView = getWindow().getDecorView();
         int option = View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
