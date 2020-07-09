@@ -13,16 +13,13 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-       /* this.requestWindowFeature(Window.FEATURE_NO_TITLE);
-        this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
-                WindowManager.LayoutParams.FLAG_FULLSCREEN);*/
         /**
          * 1、增加全屏
          * 2、增加隐藏图标
          * 3、新增功能1
          * 4、新增功能2
+         * 5、增加功能3
          */
-
         setContentView(R.layout.activity_main);
         View decorView = getWindow().getDecorView();
         int option = View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
