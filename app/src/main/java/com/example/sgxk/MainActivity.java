@@ -19,6 +19,7 @@ public class MainActivity extends AppCompatActivity {
         /**
          * 1、增加全屏
          * 2、增加隐藏图标
+         * 3、新增功能1
          */
 
         setContentView(R.layout.activity_main);
