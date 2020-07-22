@@ -3,12 +3,12 @@ package com.example.sgxk;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.view.Window;
-import android.view.WindowManager;
 
 public class MainActivity extends AppCompatActivity {
+    private Intent intent;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,7 +27,14 @@ public class MainActivity extends AppCompatActivity {
         decorView.setSystemUiVisibility(option);
         ActionBar actionBar = getSupportActionBar();
         actionBar.hide();
+        int array[] ={1,2,3,4,5};
+        for (int i = 0; i < array.length; i++) {
+
+        }
+        Object o = new Object();
+
     }
+
 
     @Override
     protected void onRestart() {
