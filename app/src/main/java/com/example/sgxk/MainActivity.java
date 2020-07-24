@@ -10,6 +10,7 @@ import android.view.View;
 public class MainActivity extends AppCompatActivity {
     private Intent intent;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -27,17 +28,18 @@ public class MainActivity extends AppCompatActivity {
         decorView.setSystemUiVisibility(option);
         ActionBar actionBar = getSupportActionBar();
         actionBar.hide();
-        int array[] ={1,2,3,4,5};
+        int array[] = {1, 2, 3, 4, 5};
         for (int i = 0; i < array.length; i++) {
+            System.out.println(array[i]);
+            Object o = new Object();
+            NewClass newClass = new NewClass();
 
         }
-        Object o = new Object();
 
     }
 
-
     @Override
-    protected void onRestart() {
-        super.onRestart();
+    protected void onStart() {
+        super.onStart();
     }
 }
