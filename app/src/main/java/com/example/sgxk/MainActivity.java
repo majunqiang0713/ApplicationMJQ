@@ -37,6 +37,8 @@ public class MainActivity extends AppCompatActivity {
         String path = context.getFilesDir().getPath();
         Toast.makeText(this, "path", Toast.LENGTH_SHORT).show();
         NewClass newClass1 = new NewClass();
+        NewClass newClass2 = new NewClass();
+        newClass1.setPassWord("pwd");
         for (int i = 0; i < array.length; i++) {
             System.out.println(array[i]);
             Object o = new Object();
