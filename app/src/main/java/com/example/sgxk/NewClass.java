@@ -17,6 +17,11 @@ class NewClass {
 
 
     }
+     public NewClass(String name, String passWord) {
+
+      this.name = name;
+        this.passWord = passWord;
+    }
 
     public String getId() {
         return id;
