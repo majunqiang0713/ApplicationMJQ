@@ -4,13 +4,27 @@ class NewClass {
     private String name;
     private String passWord;
     private String userName;
+    private String id;
 
-    public NewClass(String name, String passWord, String userName) {
+    public NewClass(String name, String passWord, String userName, String id) {
         this.name = name;
         this.passWord = passWord;
         this.userName = userName;
+        this.id = id;
     }
 
+    public NewClass() {
+
+
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
     public String getName() {
         return name;
     }
