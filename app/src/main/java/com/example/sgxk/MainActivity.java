@@ -3,9 +3,13 @@ package com.example.sgxk;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Toast;
+
+import java.util.Objects;
 
 public class MainActivity extends AppCompatActivity {
     private Intent intent;
@@ -29,10 +33,16 @@ public class MainActivity extends AppCompatActivity {
         ActionBar actionBar = getSupportActionBar();
         actionBar.hide();
         int array[] = {1, 2, 3, 4, 5};
+        Context context = getApplicationContext();
+        String path = context.getFilesDir().getPath();
+        Toast.makeText(this, "path", Toast.LENGTH_SHORT).show();
+        NewClass newClass1 = new NewClass();
         for (int i = 0; i < array.length; i++) {
             System.out.println(array[i]);
             Object o = new Object();
             NewClass newClass = new NewClass();
+
+
 
         }
 
