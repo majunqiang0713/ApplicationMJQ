@@ -1,10 +1,15 @@
 package com.example.sgxk;
 
+import java.util.List;
+
 class NewClass {
     private String name;
     private String passWord;
     private String userName;
     private String id;
+
+
+
 
     public NewClass(String name, String passWord, String userName, String id) {
         this.name = name;

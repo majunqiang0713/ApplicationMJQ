@@ -5,14 +5,18 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Toast;
 
-import java.util.Objects;
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
 
 public class MainActivity extends AppCompatActivity {
     private Intent intent;
+    private Intent intent1;
 
 
     @Override
@@ -43,8 +47,14 @@ public class MainActivity extends AppCompatActivity {
             System.out.println(array[i]);
             Object o = new Object();
             NewClass newClass = new NewClass();
+            String path1 = context.getFilesDir().getPath();
+            Toast.makeText(context, "", Toast.LENGTH_SHORT).show();
+            intent1 = new Intent(this, MainActivity.class);
 
-
+            SharedPreferences sharedPreferences = this.getSharedPreferences("setting_info", MODE_PRIVATE);
+            SharedPreferences.Editor edit = sharedPreferences.edit();
+            edit.putBoolean("state", true);
+            edit.commit();
 
         }
 
@@ -54,4 +64,19 @@ public class MainActivity extends AppCompatActivity {
     protected void onStart() {
         super.onStart();
     }
+    public  String streamToString(InputStream InputStream) throws IOException {
+
+
+            byte[] b = new byte[1024];
+            int length = -1;
+            ByteArrayOutputStream baos = new ByteArrayOutputStream();
+            while ((length = InputStream.read(b)) != -1) {
+                baos.write(b, 0, length);
+            }
+            InputStream.close();
+            return baos.toString();
+
+        }
+
+
 }
