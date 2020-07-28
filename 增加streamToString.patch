@@ -1,0 +1,103 @@
+Index: app/src/main/java/com/example/sgxk/MainActivity.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/src/main/java/com/example/sgxk/MainActivity.java	(date 1595856135000)
++++ app/src/main/java/com/example/sgxk/MainActivity.java	(date 1595912960762)
+@@ -5,14 +5,18 @@
+ 
+ import android.content.Context;
+ import android.content.Intent;
++import android.content.SharedPreferences;
+ import android.os.Bundle;
+ import android.view.View;
+ import android.widget.Toast;
+ 
+-import java.util.Objects;
++import java.io.ByteArrayOutputStream;
++import java.io.IOException;
++import java.io.InputStream;
+ 
+ public class MainActivity extends AppCompatActivity {
+     private Intent intent;
++    private Intent intent1;
+ 
+ 
+     @Override
+@@ -43,8 +47,14 @@
+             System.out.println(array[i]);
+             Object o = new Object();
+             NewClass newClass = new NewClass();
++            String path1 = context.getFilesDir().getPath();
++            Toast.makeText(context, "", Toast.LENGTH_SHORT).show();
++            intent1 = new Intent(this, MainActivity.class);
+ 
+-
++            SharedPreferences sharedPreferences = this.getSharedPreferences("setting_info", MODE_PRIVATE);
++            SharedPreferences.Editor edit = sharedPreferences.edit();
++            edit.putBoolean("state", true);
++            edit.commit();
+ 
+         }
+ 
+@@ -54,4 +64,19 @@
+     protected void onStart() {
+         super.onStart();
+     }
++    public  String streamToString(InputStream InputStream) throws IOException {
++
++
++            byte[] b = new byte[1024];
++            int length = -1;
++            ByteArrayOutputStream baos = new ByteArrayOutputStream();
++            while ((length = InputStream.read(b)) != -1) {
++                baos.write(b, 0, length);
++            }
++            InputStream.close();
++            return baos.toString();
++
++        }
++
++
+ }
+\ No newline at end of file
+Index: app/src/main/java/com/example/sgxk/NewClass.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/src/main/java/com/example/sgxk/NewClass.java	(date 1595856135000)
++++ app/src/main/java/com/example/sgxk/NewClass.java	(date 1595870119240)
+@@ -1,11 +1,16 @@
+ package com.example.sgxk;
+ 
++import java.util.List;
++
+ class NewClass {
+     private String name;
+     private String passWord;
+     private String userName;
+     private String id;
+ 
++
++
++
+     public NewClass(String name, String passWord, String userName, String id) {
+         this.name = name;
+         this.passWord = passWord;
+Index: app/src/main/java/com/example/sgxk/MyReceiver.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/src/main/java/com/example/sgxk/MyReceiver.java	(date 1595856135000)
++++ app/src/main/java/com/example/sgxk/MyReceiver.java	(date 1595899209228)
+@@ -3,6 +3,7 @@
+ import android.content.BroadcastReceiver;
+ import android.content.Context;
+ import android.content.Intent;
++import android.util.Log;
+ 
+ public class MyReceiver extends BroadcastReceiver {
+     private Intent intent;
