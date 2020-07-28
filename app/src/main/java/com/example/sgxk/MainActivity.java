@@ -6,6 +6,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Toast;
@@ -13,6 +15,9 @@ import android.widget.Toast;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.net.HttpURLConnection;
+import java.net.URL;
+import java.net.URLConnection;
 
 public class MainActivity extends AppCompatActivity {
     private Intent intent;
@@ -64,19 +69,40 @@ public class MainActivity extends AppCompatActivity {
     protected void onStart() {
         super.onStart();
     }
-    public  String streamToString(InputStream InputStream) throws IOException {
+
+    public String streamToString(InputStream InputStream) throws IOException {
 
 
-            byte[] b = new byte[1024];
-            int length = -1;
-            ByteArrayOutputStream baos = new ByteArrayOutputStream();
-            while ((length = InputStream.read(b)) != -1) {
-                baos.write(b, 0, length);
-            }
-            InputStream.close();
-            return baos.toString();
+        byte[] b = new byte[1024];
+        int length = -1;
+        ByteArrayOutputStream baos = new ByteArrayOutputStream();
+        while ((length = InputStream.read(b)) != -1) {
+            baos.write(b, 0, length);
+        }
+        InputStream.close();
+        return baos.toString();
+
+    }
+
+    public void httpUrlConnection(String path) throws Exception {
+        URL url = new URL(path);
+        HttpURLConnection urlConnection = (HttpURLConnection) url.openConnection();
+        urlConnection.setRequestMethod("GET");
+        int responseCode = urlConnection.getResponseCode();
+        if (responseCode == 200) {
+            InputStream inputStream = urlConnection.getInputStream();
+
+            Bitmap bitmap = BitmapFactory.decodeStream(inputStream);
+            runOnUiThread(new Runnable() {
+                @Override
+                public void run() {
+
+                }
+            });
 
         }
+
+    }
 
 
 }
